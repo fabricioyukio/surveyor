@@ -71,7 +71,31 @@ class Legislator(Base):
     def load_votes_results(self, votes: VoteResult) -> None:
         self.votes = votes.data
 
-    def alignment_report(self) -> pd.DataFrame:
+    def alignment_report(self) -> None:
+        # making sure the votes are loaded
         assert self.votes is not None, "Votes must be loaded first"
 
-        pass
+        results = []
+        for lid, legislator in self.data.sort_values(
+            by=["name"], ascending=True
+        ).iterrows():
+            the_votes = self.votes.sort_values(by=["legislator_id"], ascending=True)
+            # votes_yea = the_votes[
+            #     (self.votes["legislator_id"] == lid) & (self.votes["vote_type"] == 1)
+            # ]
+            votes_yea = the_votes.query(f"legislator_id == {lid} & vote_type == 1")
+            votes_nay = the_votes.query(f"legislator_id == {lid} & vote_type == 2")
+
+            results.append(
+                {
+                    "id": lid,
+                    "name": legislator["name"],
+                    "num_supported_bills": votes_yea.shape[0],
+                    "num_opposed_bills": votes_nay.shape[0],
+                }
+            )
+        votes_alignments = pd.DataFrame(results)
+        path = os.path.join(os.path.dirname(__file__), "..", "results")
+        votes_alignments.to_csv(
+            f"{path}/legislators-support-oppose-count.csv", index=False
+        )

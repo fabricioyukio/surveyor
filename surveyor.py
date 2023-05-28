@@ -9,7 +9,6 @@ votes = Vote()
 vote_results = VoteResult()
 
 legislators.load_bills(bills)
+
 legislators.load_votes_results(vote_results)
-
-
-print(legislators.alignment_report())
+legislators.alignment_report()
