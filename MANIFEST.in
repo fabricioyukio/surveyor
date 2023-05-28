@@ -1,5 +1,6 @@
 include readme.md
 include surveyor.py
+include requirements.txt
 
 recursive-include congress *
-recursive-include sample-data *
+recursive-include source-data *

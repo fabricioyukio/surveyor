@@ -97,6 +97,9 @@ class Bill(Base):
     votes_results = None
     legislators = None
 
+    def __init__(self) -> None:
+        super().__init__()
+
     def load_legislators(self, legislators: Legislator) -> None:
         self.legislators = legislators.data
 
@@ -132,7 +135,6 @@ class Bill(Base):
                     f"vote_id == {vid} & vote_type == 2"
                 ).shape[0]
 
-            print(f"{bill['title']} - by {sponsor_name} \n{votes_yea} - {votes_nay}")
             results.append(
                 {
                     "id": bid,
@@ -147,6 +149,3 @@ class Bill(Base):
         path = os.path.join(os.path.dirname(__file__), "..", "results")
         popularity_report.to_csv(f"{path}/bills.csv", index=False)
         print("Generated CSV file bills.csv")
-
-    def __init__(self) -> None:
-        super().__init__()
