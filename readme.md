@@ -38,6 +38,10 @@ See the provided data for schema information for each of the data models.
 
 ## Changelog
 
+## v1
+Added this project to a Github Repo:
+https://github.com/fabricioyukio/surveyor
+
 ### v0
 Initial file and tooling, just the minimal to load the CSV files into data, for beginning operations.
 Initially, I think of 2 simple ways to do that:
