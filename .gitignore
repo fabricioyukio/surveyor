@@ -8,6 +8,7 @@ results/*.csv
 .DS_Store
 **/.DS_Store
 .vscode/*
+.obsidian/*
 
 # C extensions
 *.so

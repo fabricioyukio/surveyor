@@ -67,17 +67,13 @@ class Legislator(Base):
     def alignment_report(self) -> None:
         # making sure the votes are loaded
         assert self.votes is not None, "Votes must be loaded first"
-
         results = []
+
         for lid, legislator in self.data.sort_values(
             by=["name"], ascending=True
         ).iterrows():
-            the_votes = self.votes.sort_values(by=["legislator_id"], ascending=True)
-            # votes_yea = the_votes[
-            #     (self.votes["legislator_id"] == lid) & (self.votes["vote_type"] == 1)
-            # ]
-            votes_yea = the_votes.query(f"legislator_id == {lid} & vote_type == 1")
-            votes_nay = the_votes.query(f"legislator_id == {lid} & vote_type == 2")
+            votes_yea = self.votes.query(f"legislator_id == {lid} & vote_type == 1")
+            votes_nay = self.votes.query(f"legislator_id == {lid} & vote_type == 2")
 
             results.append(
                 {
