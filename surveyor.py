@@ -5,10 +5,13 @@ from congress.classes import Bill, Legislator, Vote, VoteResult
 
 bills = Bill()
 legislators = Legislator()
-votes = Vote()
 vote_results = VoteResult()
+votes = Vote()
 
-legislators.load_bills(bills)
+bills.load_votes_results(vote_results)
+bills.load_legislators(legislators)
+bills.load_votes(votes)
 
-legislators.load_votes_results(vote_results)
-legislators.alignment_report()
+bills.popularity_report()
+# legislators.load_votes_results(vote_results)
+# legislators.alignment_report()

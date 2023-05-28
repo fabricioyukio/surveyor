@@ -38,11 +38,15 @@ See the provided data for schema information for each of the data models.
 
 ## Changelog
 
-## v2
+
+### v3
+Added bill's report (opposers and supporters).
+
+### v2
 Added some more lines on CSV files just to be extra sure it would work properly.
 Properly calculating for the first deliverable: "legislators and how many bills one supported and how many opposed". Will take some tests to check out.
 
-## v1
+### v1
 Added this project to a Github Repo:
 https://github.com/fabricioyukio/surveyor
 
