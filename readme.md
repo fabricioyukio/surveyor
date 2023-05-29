@@ -1,4 +1,4 @@
-# VOTES SURVEYOR
+# QUORUM SURVEYOR
 
 It takes legislators, votes results, votes, and bills provided as CSV data.
 
